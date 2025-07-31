@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found{% endblock %}
+{% block description %}Page that you are looking for was not found. Go back to the main page of the portfolio.{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full text-center">
+        <!-- 404 Illustration -->
+        <div class="mb-8">
+            <div
+                class="mx-auto w-32 h-32 bg-gradient-to-br from-primary-500 to-primary-700 rounded-full flex items-center justify-center text-white text-6xl font-bold shadow-lg">
+                404
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+            Page Not Found
+        </h1>
+
+        <p class="text-lg text-gray-600 mb-8">
+            Page you are looking for does not exist or has been moved. 
+            Please check the URL or go back to the main page.
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="space-y-4">
+            <a href="/"
+                class="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors shadow-md">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                    </path>
+                </svg>
+                Main Page
+            </a>
+
+            <div class="text-center">
+                <button onclick="history.back()"
+                    class="inline-flex items-center px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Go to previous page
+                </button>
+            </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Maybe you are looking for:</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="/projects"
+                    class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <div class="text-primary-600 dark:text-primary-400 mb-2">
+                        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-gray-100">Projects</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">My projects</p>
+                </a>
+
+                <a href="/cv"
+                    class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <div class="text-primary-600 dark:text-primary-400 mb-2">
+                        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-gray-100">CV</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Experience</p>
+                </a>
+
+                <a href="/contact"
+                    class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <div class="text-primary-600 dark:text-primary-400 mb-2">
+                        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-gray-100">Contact</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Write to me</p>
+                </a>
+
+                <a href="/"
+                    class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <div class="text-primary-600 dark:text-primary-400 mb-2">
+                        <svg class="w-6 h-6 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-medium text-gray-900 dark:text-gray-100">About me</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Who am I?</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

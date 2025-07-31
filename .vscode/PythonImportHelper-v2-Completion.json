@@ -1,0 +1,87 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Jinja2Templates",
+        "importPath": "fastapi.templating",
+        "description": "fastapi.templating",
+        "isExtraImport": true,
+        "detail": "fastapi.templating",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def home(request: Request):\n    return templates.TemplateResponse(\"index.html\", {\"request\": request})\nif __name__ == \"__main__\":\n    import uvicorn\n    import socket\n    def find_free_port(start_port: int = 8000, end_port: int = 9000):\n        for port in range(start_port, end_port + 1):\n            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:\n                try:\n                    s.bind((\"\", port))",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "templates",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",\n        \"demo_url\": None,",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "projects_data",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "projects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",\n        \"demo_url\": None,\n    }\n]\n@app.get(\"/\", response_class=HTMLResponse)",
+        "detail": "main",
+        "documentation": {}
+    }
+]
