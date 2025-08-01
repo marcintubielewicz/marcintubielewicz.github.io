@@ -11,6 +11,8 @@ templates = Jinja2Templates(directory="templates")
 if os.path.exists("static"):
     app.mount("/static", StaticFiles(directory="static"), name="static")
 
+print(os.getcwd())
+
 projects_data = [
     {
         "title": "Portfolio Website",

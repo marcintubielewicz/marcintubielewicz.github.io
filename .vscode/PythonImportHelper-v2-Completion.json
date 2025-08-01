@@ -62,7 +62,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "app = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",",
+        "peekOfCode": "app = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprint(os.getcwd())\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],",
         "detail": "main",
         "documentation": {}
     },
@@ -71,7 +71,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",\n        \"demo_url\": None,",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprint(os.getcwd())\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",",
         "detail": "main",
         "documentation": {}
     },
