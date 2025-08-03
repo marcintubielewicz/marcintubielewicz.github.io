@@ -18,9 +18,30 @@ projects_data = [
         "title": "Portfolio Website",
         "description": "Lightweight portfolio website built with FastAPI and Jinja2",
         "technologies": ["FastAPI", "Jinja2", "Tailwind CSS"],
-        "github_url": "https://github.com/username/portfolio-website",
-        "demo_url": None,
-    }
+        "github_url": "https://github.com/marcintubielewicz/marcintubielewicz.github.io",
+        "demo_url": "https://marcintubielewicz.github.io",
+    },
+    {
+        "title": "project_name",
+        "description": "Project description",
+        "technologies": ["Python", "FastAPI", "PostgreSQL", "JWT"],
+        "github_url": "https://github.com/username/[url]]",
+        "demo_url": "https://demo.url",
+    },
+    {
+        "title": "project_name",
+        "description": "Project description",
+        "technologies": ["Python", "FastAPI", "PostgreSQL", "JWT"],
+        "github_url": "https://github.com/username/[url]]",
+        "demo_url": "https://demo.url",
+    },
+    {
+        "title": "project_name",
+        "description": "Project description",
+        "technologies": ["Python", "FastAPI", "PostgreSQL", "JWT"],
+        "github_url": "https://github.com/username/[url]]",
+        "demo_url": "https://demo.url",
+    },
 ]
 
 

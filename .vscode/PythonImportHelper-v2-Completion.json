@@ -71,7 +71,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprint(os.getcwd())\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nif os.path.exists(\"static\"):\n    app.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nprint(os.getcwd())\nprojects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/marcintubielewicz/marcintubielewicz.github.io\",",
         "detail": "main",
         "documentation": {}
     },
@@ -80,7 +80,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "projects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/username/portfolio-website\",\n        \"demo_url\": None,\n    }\n]\n@app.get(\"/\", response_class=HTMLResponse)",
+        "peekOfCode": "projects_data = [\n    {\n        \"title\": \"Portfolio Website\",\n        \"description\": \"Lightweight portfolio website built with FastAPI and Jinja2\",\n        \"technologies\": [\"FastAPI\", \"Jinja2\", \"Tailwind CSS\"],\n        \"github_url\": \"https://github.com/marcintubielewicz/marcintubielewicz.github.io\",\n        \"demo_url\": \"https://marcintubielewicz.github.io\",\n    },\n    {\n        \"title\": \"project_name\",",
         "detail": "main",
         "documentation": {}
     }
