@@ -30,21 +30,6 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif', "system-ui"],
                     },
-                    colors: {
-                        'primary':{
-                            DEFAULT: '#000000', //black 
-                            0: '#ffffff', // white
-                            50: '#eff6ff', // very light blue
-                            100: '#dbeafe', // light blue
-                            500: '#3b82f6', // standard blue
-                            600: '#2563eb', // dark blue
-                            700: '#1d4ed8', // very dark blue
-                            900: '#e5e7eb', // light gray
-                            950: '#f9fafb', // very light gray
-                            990: '#111827' // very dark gray
-
-                        }
-                    },
                     animation: {
                         'fade-in': 'fade-in 0.5s ease-in-out',
                         'slide-up': 'slide-up 0.5s ease-in-out',
@@ -64,50 +49,63 @@
             plugins: [
                 function({ addComponents }) {  
                     addComponents({
+                        // GENERAL
+                        '.page-container': {
+                            '@apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8': {}
+                        },
+                        '.content-container': {
+                            '@apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12': {}
+                        },
+                        '.body-container': {
+                            '@apply bg-gray-50 dark:bg-gray-900 font-sans antialiased transition-colors duration-300': {}
+                        },
+                        '.background-primary': {
+                            '@apply bg-gray-50 dark:bg-gray-900 transition-colors duration-300': {}
+                        },
+                        '.background-secondary': {
+                            '@apply bg-white dark:bg-gray-800 transition-colors duration-300': {}
+                        },
+                        // NAVIGATION
+                        '.nav-container': {
+                            '@apply bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-300': {}
+                        },
                         '.navigation-link': {
                             '@apply text-gray-700 dark:text-gray-300 hover:text-gray-500 hover:dark:text-gray-100 px-3 py-2 text-base hover:text-2xl font-medium transition-colors': {}
                         },
                         '.navigation-link-active': {
                             '@apply text-xl font-bold text-gray-600 dark:text-gray-200': {}
                         },
+                        '.mobile-nav': {
+                            '@apply md:hidden md:block': {}
+                        },
+                        // FOOTER
+                        '.footer-container': {
+                            '@apply bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16 transition-colors duration-300': {}
+                        },
+                        // BUTTONS BASE
+                        '.buttons': {
+                            '@apply inline-flex items-center px-6 py-3 font-medium rounded-lg transition-colors': {}
+                        },
+
+                        // TEXT STYLES
                         '.heading-text': {
-                            '@apply font-bold text-gray-600 dark:text-gray-400': {}
+                            '@apply font-bold text-gray-900 dark:text-gray-100 text-3xl mb-6': {}
                         },
                         '.sub-heading-text': {
-                            '@apply text-3xl font-bold text-gray-900 dark:text-gray-400 mb-6': {}
+                            '@apply font-bold text-gray-900 dark:text-gray-100 text-2xl mb-6': {}
                         },
                         '.body-text': {
-                            '@apply text-gray-600 dark:text-gray-400': {}
+                            '@apply text-gray-700 dark:text-gray-300': {}
                         },
+                        
+                        // CHIPS
                         '.chip-header': {
-                            '@apply text-lg mb-3 font-semibold text-gray-600 dark:text-gray-400': {} 
+                            '@apply text-lg mb-3 font-semibold text-gray-700 dark:text-gray-300': {} 
                         },
                         '.chip': {
-                            '@apply text-black rounded-full text-sm font-medium': {}
+                            '@apply px-3 py-1 text-black rounded-full text-sm font-medium': {}
                         },
-                        '.img-responsive': {
-                            '@apply max-w-full h-auto': {}
-                        },
-                        '.img-rounded': {
-                            '@apply rounded-lg shadow-md': {}
-                        },
-                        '.img-dark-mode': {
-                            '@apply dark:opacity-90 dark:brightness-95': {}
-                        },
-                        // W sekcji addComponents
-                        '.image-container': {
-                            '@apply overflow-hidden rounded-lg': {}
-                        },
-                        '.image-overlay': {
-                            '@apply absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-10 transition-all duration-300': {}
-                        },
-                        // W sekcji addComponents
-                        '.img-lazy': {
-                            '@apply opacity-0 transition-opacity duration-300': {}
-                        },
-                        '.img-loaded': {
-                            '@apply opacity-100': {}
-                        }
+
                     })
                 }
             ] 
@@ -118,12 +116,12 @@
 </head>
 
 <body
-    class="bg-gray-50 dark:bg-gray-900 font-sans antialiased transition-colors duration-300">
+    class="body-container">
 
     <!-- Navigation -->
     <nav
-        class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        class="nav-container">
+        <div class="page-container">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
                     <img src="/static/images/mt.png" alt="Logo" class="h-24 w-auto">
@@ -153,8 +151,7 @@
                         </a>
 
                         <!-- Dark Mode Toggle -->
-                        <button id="theme-toggle"
-                            class="navigation-link">
+                        <button id="theme-toggle" class="navigation-link">
                             <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor"
                                 viewBox="0 0 20 20">
                                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
@@ -170,9 +167,9 @@
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
+                <div class="mobile-nav">
                     <button type="button"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 focus:outline-none focus:text-primary-600"
+                        class="navigation-link focus:outline-none focus:text-blue-600"
                         onclick="toggleMobileMenu()">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -183,16 +180,20 @@
             </div>
 
             <!-- Mobile menu -->
-            <div id="mobile-menu" class="md:hidden hidden">
+            <div id="mobile-menu" class="mobile-nav">
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-700">
                     <a href="/"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 block px-3 py-2 text-base font-medium">About me</a>
+                        class="navigation-link block {% if request.url.path == '/' %}
+                        navigation-link-active{% endif %}">About me</a>
                     <a href="/cv"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 block px-3 py-2 text-base font-medium">CV</a>
+                        class="navigation-link block {% if request.url.path == '/cv' %}
+                        navigation-link-active{% endif %}">CV</a>
                     <a href="/projects"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 block px-3 py-2 text-base font-medium">Projects</a>
+                        class="navigation-link block {% if request.url.path == '/projects' %}
+                        navigation-link-active{% endif %}">Projects</a>
                     <a href="/contact"
-                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 block px-3 py-2 text-base font-medium">Contact</a>
+                        class="navigation-link block {% if request.url.path == '/contact' %}
+                        navigation-link-active{% endif %}">Contact</a>
                 </div>
             </div>
         </div>
@@ -205,8 +206,8 @@
 
     <!-- Footer -->
     <footer
-        class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        class="footer-container">
+        <div class="page-container py-8">
             <div class="text-center text-gray-600 dark:text-gray-400">
                 <p>&copy; {{ current_year or 2025 }} Marcin Tubielewicz Licensed under GPL v3.</p>
                 <p class="mt-2 text-sm">Built with FastAPI, Jinja2, and Tailwind CSS</p>
