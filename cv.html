@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Website</title>
+    <meta name ="description" content=""Curriculum Vitae - experience, education and skills" />
+    <meta name=""author" content="Your Name" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+        
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif', "system-ui"],
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.5s ease-in-out',
+                        'slide-up': 'slide-up 0.5s ease-in-out',
+                    },
+                    keyframes: {
+                        'fade-in': {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 },
+                        },
+                        'slide-up': {
+                            '0%': { transform: 'translateY(100%)', opacity: 0 },
+                            '100%': { transform: 'translateY(0)', opacity: 1 },
+                        }
+                    }
+                }
+            },
+            plugins: [
+                function({ addComponents }) {  
+                    addComponents({
+                        // GENERAL
+                        '.page-container': {
+                            '@apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8': {}
+                        },
+                        '.content-container': {
+                            '@apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12': {}
+                        },
+                        '.body-container': {
+                            '@apply bg-gray-50 dark:bg-gray-900 font-sans antialiased transition-colors duration-300': {}
+                        },
+                        '.background-primary': {
+                            '@apply bg-gray-50 dark:bg-gray-900 transition-colors duration-300': {}
+                        },
+                        '.background-secondary': {
+                            '@apply bg-white dark:bg-gray-800 transition-colors duration-300': {}
+                        },
+
+                        // NAVIGATION
+                        '.nav-container': {
+                            '@apply bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 transition-colors duration-300': {}
+                        },
+                        '.navigation-link': {
+                            '@apply text-gray-700 dark:text-gray-300 hover:text-gray-500 hover:dark:text-gray-100 px-3 py-2 text-base hover:text-2xl font-medium transition-colors': {}
+                        },
+                        '.navigation-link-active': {
+                            '@apply text-xl font-bold text-gray-600 dark:text-gray-200': {}
+                        },
+                        '.mobile-nav': {
+                            '@apply md:hidden md:block': {}
+                        },
+
+                        // FOOTER
+                        '.footer-container': {
+                            '@apply bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto transition-colors duration-300': {}
+                        },
+
+                        // BUTTONS BASE
+                        '.buttons': {
+                            '@apply inline-flex items-center px-6 py-3 font-medium rounded-lg transition-colors': {}
+                        },
+
+                        // TEXT STYLES
+                        '.heading-text': {
+                            '@apply font-bold text-gray-900 dark:text-gray-100 text-3xl mb-6': {}
+                        },
+                        '.sub-heading-text': {
+                            '@apply font-bold text-gray-900 dark:text-gray-100 text-2xl mb-6': {}
+                        },
+                        '.body-text': {
+                            '@apply text-gray-700 dark:text-gray-300': {}
+                        },
+                        
+                        // CHIPS
+                        '.chip-header': {
+                            '@apply text-lg mb-3 font-semibold text-gray-700 dark:text-gray-300': {} 
+                        },
+                        '.chip': {
+                            '@apply px-3 py-1 text-black rounded-full text-sm font-medium': {}
+                        },
+
+                    })
+                }
+            ] 
+        }
+    </script>
+    
+    
+</head>
+
+<body
+    class="body-container">
+
+    <!-- Navigation -->
+    <nav
+        class="nav-container">
+        <div class="page-container">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <img src="/static/images/mt.png" alt="Logo" class="h-24 w-auto">
+                </div>
+
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="/"
+                            class="navigation-link ">
+                            About me
+                        </a>
+                        <a href="/cv"
+                            class="navigation-link 
+                            navigation-link-active">
+                            CV
+                        </a>
+                        <a href="/projects"
+                            class="navigation-link ">
+                            Projects
+                        </a>
+                        <a href="/contact"
+                            class="navigation-link ">
+                            Contact
+                        </a>
+
+                        <!-- Dark Mode Toggle -->
+                        <button id="theme-toggle" class="navigation-link">
+                            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="mobile-nav">
+                    <button type="button"
+                        class="navigation-link focus:outline-none focus:text-blue-600"
+                        onclick="toggleMobileMenu()">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="mobile-nav">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200 dark:border-gray-700">
+                    <a href="/"
+                        class="navigation-link block ">About me</a>
+                    <a href="/cv"
+                        class="navigation-link block 
+                        navigation-link-active">CV</a>
+                    <a href="/projects"
+                        class="navigation-link block ">Projects</a>
+                    <a href="/contact"
+                        class="navigation-link block ">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="page-container">
+        
+<div class="content-container">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="heading-text text-4xl">Curriculum Vitae</h1>
+        <p class="text-2xl text-gray-600">Marcin Tubielewicz</p>
+        <div class="mt-6">
+            <a href="/static/cv.pdf" target="_blank"
+                class="buttons bg-blue-600 text-white hover:bg-blue-700 shadow-md">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                    </path>
+                </svg>
+                Download PDF
+            </a>
+        </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div
+        class="background-secondary rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
+        <h2 class="heading-text text-2xl font-bold mb-4">Contact Information</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex items-center">
+                <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">marcin.tubielewicz@gmail.com</span>
+            </div>
+            <div class="flex items-center">
+                <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                    </path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">+48 602 522 030</span>
+            </div>
+            <div class="flex items-center">
+                <svg class="w-5 h-5 text-gray-400 dark:text-gray-500 mr-3" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span class="text-gray-700 dark:text-gray-300">Zielonka, Poland</span>
+            </div>
+            <div class="flex items-center">
+                <svg class="w-5 h-5 text-gray-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <a href="https://github.com/marcintubielewicz"
+                    class="text-blue-600 hover:text-blue-700">github.com/marcintubielewicz</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience -->
+    <div
+        class="background-secondary rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Experience</h2>
+        <div class="space-y-6">
+            <div class="border-l-4 border-blue-500 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">IT Consultant / IT Solution Architect</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Mar 2024 - Present</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                <li>Analyse functional & technical requirements for AI solutions</li>
+                <li>Design ML/LLM‑ready system architectures that align with enterprise IT strategy and security standards</li>
+                <li>Produce technical documentation and operating procedures</li>
+                <li>Plan & monitor multi-team IT projects (scope, budget, schedule)</li>
+                <li>Develop React/.NET/FastAPI Business‑ready applications</li>
+                <li>Integrate LLM models with existing infrastructure</li> 
+                <li>Lead full AI / RAG roll-outs from concept to production</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Senior Business Specialist</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Sep 2021 - Mar 2024</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Build raw-material price & KPI databases; forecast steel-market trends</li>
+                    <li>Deliver analytics dashboards in Excel / Power BI</li>
+                    <li>Support IT: deploy & maintain on-prem infrastructure, security monitoring, hardware / OS configuration</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Manager of Metallurgical Section</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Oct 2018 - Aug 2021</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Lead purchasing team; plan delivery schedules to secure production</li>
+                    <li>Control stock of raw materials; enforce regulatory compliance</li>
+                    <li>Streamline procurement processes for cost and quality gains</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Operational Purchasing Manager</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Apr 2015 - Sep 2018</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Manage and mentor buyer team; set KPIs and career paths</li>
+                    <li>Develop & execute sourcing strategies; negotiate contracts, select suppliers</li>
+                    <li>Introduce IT tools to boost procurement efficiency and reporting</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Acting Purchasing Manager</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">May 2013 - Mar 2015</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Drive cost-reduction programmes via strategic sourcing</li>
+                    <li>Optimise inventory and supply-chain performance</li>
+                    <li>Build long-term supplier relationships; solve supply issues</li>
+                </ul>
+            </div>
+            
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Operational Purchasing Specialist</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Sep 2010 - Mar 2015</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Run end-to-end purchasing cycle and price negotiations</li>
+                    <li>Deliver cost savings aligned with corporate goals</li>
+                    <li>Train junior staff on procurement best-practice</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Operational Purchasing Manager (Interim),</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Feb 2009 - Aug 2009</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Raise team efficiency; deliver targeted training</li>
+                    <li>Recommend cost-reduction actions; preserve supplier partnerships</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Buyer</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Jan 2008 - Aug 2010</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Monitor supply chain to keep production uninterrupted</li>
+                    <li>Plan long-term sourcing and maintain supplier relations</li>
+                    <li>Identify & implement cost-optimisation measures</li>
+                </ul>
+            </div>
+
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Junior Buyer</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Jun 2007 - Dec 2007</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Belma Accessories Systems Sp. z o.o., Biale Blota, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Track inventory; evaluate bids and issue purchase orders</li>
+                    <li>Report procurement metrics; support senior buyers</li>
+                </ul>
+            </div>
+            
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Coach / Instructor</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Mar 2016 - Aug 2022</span>
+                </div>
+                <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">SPWIGOR, Bydgoszcz, Poland</p>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Conduct regular classes for children, teens, and adults across beginner-to-black-belt levels</li>
+                    <li>Create progressive training plans that blend kihon, kata, and kumite to meet federation grading standards</li>
+                    <li>Demonstrate and drill practical self-defence scenarios, emphasising decision-making under stress</li>
+                    <li>Monitor individual progress and prepare students for belt examinations and regional tournaments</li>
+                    <li>Mentor junior assistant instructors, providing feedback on teaching technique and class management</li>
+                    <li>Promote values of discipline, respect, and goal-setting—boosting retention and parental satisfaction</li>
+                </ul>
+            </div>
+            
+            <div class="border-l-4 border-gray-300 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Early Career Roles</h3>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Jun 1997 - May 2007</span>
+                </div>
+                <ul class="text-gray-700 dark:text-gray-300 space-y-1 list-disc list-inside">
+                    <li>Customer Service – Caro Trading Company (Sep 2005 – May 2007, Bydgoszcz)</li>
+                    <li>Service Technician – Bank-Serwis Ltd. (Jan 2005 – Jun 2005, Bydgoszcz)</li>
+                    <li>Owner – F.H.U. Anmar (Jan 2004 – Dec 2004, Bydgoszcz)</li>
+                    <li>Invoice & Sales Clerk – Plafon Ltd. (Jan 2002 – Jan 2004, Bydgoszcz)</li>
+                    <li>Sales Representative – Plafon s.c. (Feb 1999 – Dec 2001, Bydgoszcz)</li>
+                    <li>Warehouseman – Micronel Ltd. (Jun 1997 – Jan 1999, Bydgoszcz)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div
+        class="background-secondary rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Education</h2>
+        <div class="border-l-4 border-blue-500 pl-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">IT in Business</h3>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Oct 2019 - Mar 2023</span>
+            </div>
+            <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Merito University, Bydgoszcz, Poland</p>
+            <p class="text-gray-700 dark:text-gray-300">Database Systems and Data Warehouse Engineer</p>
+        </div>
+    </br>
+        <div class="border-l-4 pl-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Manager's Academy</h3>
+                <span class="text-sm text-gray-500 dark:text-gray-400">2014-2015</span>
+            </div>
+            <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Higher School of Economy in Bydgoszcz, Poland</p>
+            <!-- <p class="text-gray-700 dark:text-gray-300">Database Systems and Data Warehouse Engineer</p> -->
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div
+        class="background-secondary rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Technical Skills</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Programming Languages</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">Python</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">JavaScript</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">C#</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Frameworks & Tools</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">FastAPI</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">React</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">.Net</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="background-secondary rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Soft Skills</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Interpersonal</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">Active listening and empathy</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">Effective teamwork</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">Giving and receiving constructive feedback</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">Analytical</h3>
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">Critical thinking and reasoning</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">Root cause problem solving</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700 dark:text-gray-300">Evidence-based decision making</span>
+                        <div class="w-32 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                            <div class="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Languages -->
+    <div
+        class="background-secondary rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Languages</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="text-center">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">Polish</h3>
+                <p class="text-gray-600 dark:text-gray-400">Native</p>
+            </div>
+            <div class="text-center">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">English</h3>
+                <p class="text-gray-600 dark:text-gray-400">B2: Reading and Comprehension</p>
+                <p class="text-gray-600 dark:text-gray-400">B1: Speaking</p>
+            </div>
+            <div class="text-center">
+                <h3 class="font-semibold text-gray-900 dark:text-gray-100">German</h3>
+                <p class="text-gray-600 dark:text-gray-400">C1</p>
+                <p class="text-gray-600 dark:text-gray-400">ZDaF issued by GLS Language School</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer
+        class="footer-container">
+        <div class="page-container py-8">
+            <div class="text-center text-gray-600 dark:text-gray-400">
+                <p>&copy; 2025 Marcin Tubielewicz Licensed under GPL v3.</p>
+                <p class="mt-2 text-sm">Built with FastAPI, Jinja2, and Tailwind CSS</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Dark mode toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function () {
+            // Toggle icons
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // Toggle dark mode
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+
+</html>
