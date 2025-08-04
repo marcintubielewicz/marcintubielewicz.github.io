@@ -14,7 +14,7 @@ FastAPI is used only to pre‑render Jinja templates locally and export a fully 
 ## 🛠 Tech Stack
 - **Backend**: FastAPI + Jinja2
 - **Stylizacja**: Tailwind CSS (CDN)
-- **Deployment**: GitHub Pages (statyczne pliki HTML)
+- **Deployment**: GitHub Pages (static HTML files)
 - **Icons**: SVG (inline)
 - **Fonts**: Inter (Google Fonts)
 
